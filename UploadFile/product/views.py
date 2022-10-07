@@ -14,12 +14,11 @@ from rest_framework import status
 # Create your views here.
 
 class Product(APIView):
-    
+    serializer_class = FileSerializer
     def get(self, request):
         return Response(data = {'name': 'hadeer'})
 
-    def post(self, request):
-        print(request)
+    def post(self, request):        
         serializer = FileSerializer(data = request.data)
         if serializer.is_valid():
             serializer.save()
